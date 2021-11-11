@@ -1,8 +1,11 @@
 package com.andrey.tests;
 
+import com.andrey.pages.DemoQAFormPage;
 import org.junit.jupiter.api.Test;
 
 public class DemoQAFormTest extends BaseTest {
+
+    DemoQAFormPage demoQAFormPage = new DemoQAFormPage();
 
     @Test
     void selenideSearchTest() {
