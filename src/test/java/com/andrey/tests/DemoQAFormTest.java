@@ -1,6 +1,7 @@
 package com.andrey.tests;
 
 import com.andrey.pages.DemoQAFormPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class DemoQAFormTest extends BaseTest {
@@ -8,6 +9,7 @@ public class DemoQAFormTest extends BaseTest {
     DemoQAFormPage demoQAFormPage = new DemoQAFormPage();
 
     @Test
+    @DisplayName("Заполнение тестовой формы DemoQA и проверка соответствия данных")
     void selenideSearchTest() {
         demoQAFormPage.openPage()
                 .typeFirstName(TestData.firstName)

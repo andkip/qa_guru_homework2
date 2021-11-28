@@ -3,6 +3,7 @@ package com.andrey.pages;
 import com.andrey.pages.components.Calendar;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import java.util.Map;
 
@@ -30,78 +31,93 @@ public class DemoQAFormPage {
     public Calendar calendar = new Calendar();
 
     // actions
+    @Step("Открыть страницу demoqa.com")
     public DemoQAFormPage openPage() {
         open("https://demoqa.com/automation-practice-form");
         title.shouldHave(text(TITLE));
         return this;
     }
 
+    @Step("Заполнить поле First Name данными: \"{0}\"")
     public DemoQAFormPage typeFirstName(String value) {
         firstName.setValue(value);
         return this;
     }
 
+    @Step("Заполнить поле Last Name данными: \"{0}\"")
     public DemoQAFormPage typeLastName(String value) {
         lastName.setValue(value);
         return this;
     }
 
+    @Step("Заполнить поле User Email данными: \"{0}\"")
     public DemoQAFormPage typeUserEmail(String value) {
         userEmail.setValue(value);
         return this;
     }
 
+    @Step("Заполнить поле Gender данными: \"{0}\"")
     public DemoQAFormPage chooseGender(String value) {
         $(byText(value)).click();
         return this;
     }
 
+    @Step("Заполнить поле User Number данными: \"{0}\"")
     public DemoQAFormPage typeUserNumber(String value) {
         userNumber.setValue(value);
         return this;
     }
 
+    @Step("Выбрать в календаре дату: \"{0}\"")
     public DemoQAFormPage setDate(String date) {
         calendar.fillDate(date);
         return this;
     }
 
+    @Step("Ввести первую букву \"{0}\" и выбрать предмет: \"{1}\"")
     public DemoQAFormPage chooseSubject(String firstLetter, String subject) {
         subjectsInput.setValue(firstLetter);
         $(byText(subject)).click();
         return this;
     }
 
+    @Step("Выбрать хобби: \"{0}\"")
     public DemoQAFormPage chooseHobby(String value) {
         $(byText(value)).click();
         return this;
     }
 
+    @Step("Выполнить загрузку картинки \"{0}\" на сайт")
     public DemoQAFormPage uploadPicture(String value) {
         uploadPicture.uploadFromClasspath(value);
         return this;
     }
 
+    @Step("Заполнить поле Address данными: \"{0}\"")
     public DemoQAFormPage typeAddress(String value) {
         currentAddress.setValue(value);
         return this;
     }
 
+    @Step("Выбрать штат: \"{0}\"")
     public DemoQAFormPage chooseState(String value) {
         stateInput.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Выбрать город: \"{0}\"")
     public DemoQAFormPage chooseCity(String value) {
         cityInput.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Нажать Submit")
     public DemoQAFormPage clickSubmit() {
         submit.click();
         return this;
     }
 
+    @Step("Проверить соответствие данных в полях: \"{0}\"")
     public DemoQAFormPage checkFields(Map<String, String> expectedValues) {
         ElementsCollection rows = $$("tbody tr");
         for (SelenideElement row : rows) {
