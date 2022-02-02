@@ -2,13 +2,15 @@ package com.andrey.config;
 
 import org.aeonbits.owner.Config;
 
+import java.net.URL;
+
 @Config.Sources("classpath:config/${environment}.properties")
 
 public interface WebConfig extends Config {
 
     @Key("browser")
     @DefaultValue("CHROME")
-    String getBrowser();
+    Browser getBrowser();
 
     @Key("browserVersion")
     @DefaultValue("96.0")
@@ -19,5 +21,5 @@ public interface WebConfig extends Config {
     String getBaseUrl();
 
     @Key("remoteDriver")
-    String getRemoteDriver();
+    URL getRemoteDriver();
 }
