@@ -1,9 +1,11 @@
 package com.andrey.pages;
 
+import com.andrey.config.WebConfig;
 import com.andrey.pages.components.Calendar;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.aeonbits.owner.ConfigFactory;
 
 import java.util.Map;
 
@@ -13,6 +15,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DemoQAFormPage {
+
+    WebConfig web = ConfigFactory.create(WebConfig.class);
 
     // locators & elements
     private final String TITLE = "Student Registration Form";
@@ -33,7 +37,7 @@ public class DemoQAFormPage {
     // actions
     @Step("Открыть страницу demoqa.com")
     public DemoQAFormPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open(web.getBaseUrl());
         title.shouldHave(text(TITLE));
         return this;
     }
